@@ -1,0 +1,13 @@
+{
+  "traders": [
+    {
+      "id": "1",
+      "firstName": "Alex",
+      "lastName": "Stuhl",
+      "email": "alex.stuhl@yahoo.com",
+      "phone": "480 2113 2233",
+      "country": "Russia",
+      "accountType": "PREMIUM"
+    }
+  ]
+}

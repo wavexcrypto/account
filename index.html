@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./wwwroot/styles/styles.css">
+    <title>WaveX | Profile</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header--inner">
+            <p class="header__logo">WaveX</p>
+            <div class="header__name">
+                <img src="./wwwroot/icons/user.svg" alt="">
+                <p id="headerFullName"></p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <a href="./index.html" class="sidebar__link active">
+                <img src="./wwwroot/icons/user-nav.svg" alt="">                   
+                <span>Profile</a>
+            </a>
+            <a href="./index.html" class="sidebar__link">
+                <img src="./wwwroot/icons/card.svg" alt="">                   
+                <span>Balance</a>
+            </a>
+            <a href="./index.html" class="sidebar__link">
+                <img src="./wwwroot/icons/file-text.svg" alt="">                   
+                <span>History</a>
+            </a>
+            <a href="./index.html" class="sidebar__link">
+                <img src="./wwwroot/icons/unlock.svg" alt="">                   
+                <span>Security</a>
+            </a>
+        </aside>
+        <section class="content">
+            <div class="content--inner">
+                <div class="profile__info">
+                    <div class="profile__header">
+                        <p class="profile__full-name" id="profileFullName"></p>
+                        <p class="profile__account-type" id="accountType"></p>
+                    </div>
+                    <p class="profile__email" id="email"></p>
+                    <p class="profile__additional-info">
+                        <span id="additionalInfo"></span>
+                        <img src="" alt="" id="flag">
+                    </p>
+                </div>
+                <div class="content__buttons">
+                    <a href="edit-profile.html" class="btn">Edit profile</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        fetch('http://localhost:3000/traders')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                renderContent(data[0])
+            });
+
+        function renderContent(data){
+            const headerFullName = document.getElementById("headerFullName");
+            const fullNameElm = document.getElementById("profileFullName");
+
+            let fullName = `${data.firstName} ${data.lastName}`;
+            headerFullName.textContent = fullName;
+            fullNameElm.textContent = fullName;
+
+            const accountTypeElm = document.getElementById("accountType");
+            accountTypeElm.textContent = data.accountType;
+
+            const emailElm = document.getElementById("email");
+            emailElm.textContent = data.email;
+
+            const additionalInfoElm = document.getElementById("additionalInfo")
+            const flagElm = document.getElementById("flag");
+            additionalInfoElm.textContent = `${data.phone} ${data.country}`;
+            flagElm.setAttribute("src", `wwwroot/flags/${data.country}.svg`)
+            
+        }
+    </script>
+</body>
+</html>
