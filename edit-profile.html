@@ -66,14 +66,14 @@
     </main>
 
     <script>
-        const url = "http://localhost:3000/traders/1";
+        const url = 'https://wavexcrypto.github.io/account/db.json';
 
         fetch(url)
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
-                renderContent(data)
+                renderContent(data.traders[0])
             });
 
         function renderContent(data){
@@ -104,8 +104,8 @@
                 const firstNameElm = document.getElementById("firstName");
                 const lastNameElm = document.getElementById("lastName");
 
-                originalData.firstName = firstNameElm.value;
-                originalData.lastName = lastNameElm.value;
+                originalData.traders[0].firstName = firstNameElm.value;
+                originalData.traders[0].lastName = lastNameElm.value;
 
                 const requestOptions = {
                     method: 'PUT', 
