@@ -67,6 +67,22 @@ body {
     border: 1px solid #7F30CB;
 }
 
+.btn.btn-green-outline {
+    background: transparent;
+    border: 1px solid #21A67C;
+    color: #21A67C;
+}
+
+.btn.btn-red-outline {
+    background: transparent;
+    border: 1px solid #A62921;
+    color: #A62921;
+}
+
+.text-green {
+    color: #21A67C;
+}
+
 .input--wrapper {
     max-width: 320px;
     height: 56px;
@@ -141,6 +157,7 @@ body {
     color: #A6A0BB;
     text-decoration: none;
     transition: background .2s ease-in-out;
+    cursor: pointer;
 }
 
 .sidebar__link:hover {
@@ -198,4 +215,123 @@ body {
 .profile__edit {
     display: grid;
     gap: 18px;
+}
+
+.balance {
+    display: flex;
+    align-items: end;
+    gap: 30px;
+}
+
+.balance__card {
+    width: 302px;
+    height: 183px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: url('../svg/card.svg') center/cover no-repeat transparent;
+    font-weight: 400;
+}
+
+.balance__title {
+    font-size: 12px;
+}
+
+.balance__amount {
+    font-weight: 500;
+}
+
+.balance__address {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 300;
+    color: #A6A0BB;
+}
+
+.statistic__grid-rows {
+    height: calc(100vh - 350px);
+    overflow-y: auto;
+}
+
+.statistic__grid-rows::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+/* Track */
+.statistic__grid-rows::-webkit-scrollbar-track {
+background: transparent;
+}
+
+/* Handle */
+.statistic__grid-rows::-webkit-scrollbar-thumb {
+background: #1E1B26;
+}
+
+/* Handle on hover */
+.statistic__grid-rows::-webkit-scrollbar-thumb:hover {
+background: #555;
+}
+
+.statistic__header {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.staistic__link {
+    text-decoration: none;
+    color: #A6A0BB;
+}
+
+.staistic__link.active {
+    color: white;
+}
+
+.statistic__row {
+    height: 34px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    color: #C7C6C9;
+}
+
+.statistic__row.statistic__row--head {
+    color: #A6A0BB;
+}
+
+.statistic__row:nth-child(even) {
+    background-color: #1E1B26;
+}
+
+.staistic__col {
+    padding-left: 20px;
+}
+
+.content.login {
+    width: 379px;
+    margin: 0 auto;
+}
+
+.content.login .content--inner {
+    min-height: 250px;
+}
+
+.btn.btn-login {
+    width: 100%;
+}
+
+.login__inputs {
+    display: grid;
+    gap: 20px;
+}
+
+.error-message {
+    font-weight: 400;
+    color: #cd3429;
 }
