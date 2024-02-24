@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./wwwroot/styles/styles.css">
+    <title>WaveX | Profile</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header--inner">
+            <p class="header__logo">WaveX</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content login">
+            <div class="content--inner">
+                <form name="loginForm" class="login__inputs">
+                    <label class="input--wrapper">
+                        <input type="text" class="input" id="loginEmail" required>
+                        <span class="input__placeholder">Enter Email</span>
+                    </label>
+                    <label class="input--wrapper">
+                        <input type="password" class="input" id="loginPassword" required>
+                        <span class="input__placeholder">Enter Password</span>
+                    </label>
+                    <p class="error-message" id="errorMessage"></p>
+                </form>
+                <div class="content__buttons">
+                    <button class="btn btn-login" id="loginBtn">Login</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let url = "https://wavexcrypto.github.io/account/db.json";
+        //let url = "db.json";
+
+        const email = localStorage.getItem("email")
+        if(email) {
+            document.location.href = "index.html"
+        }
+        else {
+            const form = document.forms.loginForm;
+            const errorMessageElm = document.getElementById("errorMessage");
+            const loginBtn = document.getElementById("loginBtn");
+
+            loginBtn.addEventListener("click", () => {
+                errorMessageElm.textContent = "";
+                if(form.elements.loginEmail.value == "alex.stuhl@yahoo.com" && form.elements.loginPassword.value == "123456") {
+                    localStorage.setItem("email", "alex.stuhl@yahoo.com")
+                    document.location.href = "index.html";
+                }
+                else {
+                    errorMessageElm.textContent = "Invalid email or password";
+                }
+            })
+        }
+    </script>
+</body>
+</html>

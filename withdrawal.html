@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./wwwroot/styles/styles.css">
-    <title>WaveX | Profile</title>
+    <title>WaveX | Edit profile</title>
 </head>
 <body>
     <header class="header">
@@ -19,7 +19,7 @@
 
     <main class="container">
         <aside class="sidebar">
-            <a href="./index.html" class="sidebar__link active">
+            <a href="./index.html" class="sidebar__link">
                 <img src="./wwwroot/icons/user-nav.svg" alt="">                   
                 <span>Profile</a>
             </a>
@@ -27,7 +27,7 @@
                 <img src="./wwwroot/icons/card.svg" alt="">                   
                 <span>Balance</a>
             </a>
-            <a href="./deposit.html" class="sidebar__link">
+            <a href="./deposit.html" class="sidebar__link active">
                 <img src="./wwwroot/icons/file-text.svg" alt="">                   
                 <span>History</a>
             </a>
@@ -37,29 +37,30 @@
             </button>
         </aside>
         <section class="content">
-            <div class="content--inner">
-                <div class="profile__info">
-                    <div class="profile__header">
-                        <p class="profile__full-name" id="profileFullName"></p>
-                        <p class="profile__account-type" id="accountType"></p>
-                    </div>
-                    <p class="profile__email" id="email"></p>
-                    <p class="profile__additional-info">
-                        <span id="additionalInfo"></span>
-                        <img src="" alt="" id="flag">
-                    </p>
+            <div class="staistic">
+                <div class="statistic__header">
+                    <a href="deposit.html" class="staistic__link">Deposit</a>
+                    <a href="withdrawal.html" class="staistic__link active">Withdrawal</a>
                 </div>
-                <div class="content__buttons">
-                    <a href="edit.html" class="btn">Edit profile</a>
+                <div class="staistic__grid">
+                    <div class="statistic__row statistic__row--head">
+                        <p class="staistic__col">Date</p>
+                        <p class="staistic__col">Address</p>
+                        <p class="staistic__col">Amount</p>
+                        <p class="staistic__col">Status</p>
+                    </div>
+                    <div class="statistic__grid-rows" id="statistic">
+
+                    </div>
                 </div>
             </div>
-        </section>
+        </section> 
     </main>
 
     <script>
         let url = "https://wavexcrypto.github.io/account/db.json";
         //let url = "db.json";
-
+        
         const email = localStorage.getItem("email")
         if(email) {
             fetch(url)
@@ -82,23 +83,24 @@
 
         function renderContent(data){
             const headerFullName = document.getElementById("headerFullName");
-            const fullNameElm = document.getElementById("profileFullName");
-
             let fullName = `${data.firstName} ${data.lastName}`;
             headerFullName.textContent = fullName;
-            fullNameElm.textContent = fullName;
 
-            const accountTypeElm = document.getElementById("accountType");
-            accountTypeElm.textContent = data.accountType;
+            console.log(data.transactions);
+            const statistic = document.getElementById("statistic");
 
-            const emailElm = document.getElementById("email");
-            emailElm.textContent = data.email;
-
-            const additionalInfoElm = document.getElementById("additionalInfo")
-            const flagElm = document.getElementById("flag");
-            additionalInfoElm.textContent = `${data.phone} ${data.country}`;
-            flagElm.setAttribute("src", `wwwroot/flags/${data.country}.svg`)
-            
+            data.transactions.forEach(element => {
+                if(element.side == "Withdrawal") {
+                    const address = element.address.substr(0, 5) + "..." + element.address.substr(element.address.length - 5);
+                    const row = document.createElement("div");
+                    row.classList.add("statistic__row");
+                    row.innerHTML = `<p class="staistic__col">${element.date}</p>
+                            <p class="staistic__col">${element.amount} ${element.coin}</p>
+                            <p class="staistic__col">${address}</p>
+                            <p class="staistic__col text-green">${element.status}</p>`
+                    statistic.appendChild(row);
+                }
+            });
         }
     </script>
 </body>

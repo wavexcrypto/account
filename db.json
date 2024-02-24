@@ -1,13 +1,100 @@
 {
-  "traders": [
+  "id": "1",
+  "firstName": "Alex",
+  "lastName": "Stuhl",
+  "email": "alex.stuhl@yahoo.com",
+  "phone": "480 2113 2233",
+  "country": "Russia",
+  "accountType": "PREMIUM",
+  "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+  "transactions": [
     {
-      "id": "1",
-      "firstName": "Alex",
-      "lastName": "Stuhl",
-      "email": "alex.stuhl@yahoo.com",
-      "phone": "480 2113 2233",
-      "country": "Russia",
-      "accountType": "PREMIUM"
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": 270,
+      "status": "Completed",
+      "side": "Deposit",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": 160,
+      "status": "Completed",
+      "side": "Deposit",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": 160,
+      "status": "Completed",
+      "side": "Deposit",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": 160.50,
+      "status": "Completed",
+      "side": "Deposit",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": 160,
+      "status": "Completed",
+      "side": "Deposit",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": 400,
+      "status": "Completed",
+      "side": "Deposit",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": -20,
+      "status": "Completed",
+      "side": "Withdrawal",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": -120,
+      "status": "Completed",
+      "side": "Withdrawal",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": -150,
+      "status": "Completed",
+      "side": "Withdrawal",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": -40.2,
+      "status": "Completed",
+      "side": "Withdrawal",
+      "coin": "USDT"
+    },
+    {
+      "date": "2024.01.24 08:34:21",
+      "address": "1464jQA1cjRFpaFWdRDbjXpoAsWMGd2awd",
+      "amount": -20,
+      "status": "Completed",
+      "side": "Withdrawal",
+      "coin": "USDT"
     }
   ]
 }

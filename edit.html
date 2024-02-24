@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./wwwroot/styles/styles.css">
+    <title>WaveX | Edit profile</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header--inner">
+            <p class="header__logo">WaveX</p>
+            <div class="header__name">
+                <img src="./wwwroot/icons/user.svg" alt="">
+                <p id="headerFullName"></p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <aside class="sidebar">
+            <a href="./index.html" class="sidebar__link active">
+                <img src="./wwwroot/icons/user-nav.svg" alt="">                   
+                <span>Profile</a>
+            </a>
+            <a href="./balance.html" class="sidebar__link">
+                <img src="./wwwroot/icons/card.svg" alt="">                   
+                <span>Balance</a>
+            </a>
+            <a href="./deposit.html" class="sidebar__link">
+                <img src="./wwwroot/icons/file-text.svg" alt="">                   
+                <span>History</a>
+            </a>
+            <div class="sidebar__link" id="logout">
+                <img src="./wwwroot/icons/loguot.svg" alt="">                   
+                <span>Logout</a>
+            </button>
+        </aside>
+        <section class="content">
+            <div class="content--inner">
+                <div class="profile__edit">
+                    <label class="input--wrapper disabled">
+                        <input type="text" class="input" id="firstName" required disabled>
+                        <span class="input__placeholder">Enter First Name</span>
+                    </label>
+                    <label class="input--wrapper disabled">
+                        <input type="text" class="input" id="lastName" required disabled>
+                        <span class="input__placeholder">Enter Last Name</span>
+                    </label>
+                    <label class="input--wrapper disabled">
+                        <input type="text" class="input" id="email" required disabled>
+                        <span class="input__placeholder">Enter Email</span>
+                        <span class="input__btn">Send code</span>
+                    </label>
+                    <label class="input--wrapper disabled">
+                        <input type="text" class="input" id="country" required disabled>
+                        <span class="input__placeholder">Enter Country</span>
+                    </label>
+                </div>
+                <div class="content__buttons">
+                    <button class="btn" id="saveBtn">Save</button>
+                    <a href="./index.html" class="btn btn-outline">Cancel</a>
+                </div>
+            </div>
+        </section> 
+    </main>
+
+    <script>
+        let url = "https://wavexcrypto.github.io/account/db.json";
+        //let url = "db.json";
+        
+        const email = localStorage.getItem("email")
+        if(email) {
+            fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                renderContent(data)
+            });
+
+            const logoutBtn = document.getElementById("logout");
+            logoutBtn.addEventListener("click", () => {
+                localStorage.removeItem("email")
+                document.location.href = "login.html"
+            })
+        }
+        else {
+            document.location.href = "login.html"
+        }
+
+        function renderContent(data){
+            const headerFullName = document.getElementById("headerFullName");
+            let fullName = `${data.firstName} ${data.lastName}`;
+            headerFullName.textContent = fullName;
+
+            const firstNameElm = document.getElementById("firstName");
+            const lastNameElm = document.getElementById("lastName");
+            const emailElm = document.getElementById("email");
+            const countryElm = document.getElementById("country");
+            firstNameElm.value = data.firstName;
+            lastNameElm.value = data.lastName;
+            emailElm.value = data.email;
+            countryElm.value = data.country;
+        }
+
+        //const saveBtn = document.getElementById("saveBtn");
+        //saveBtn.addEventListener("click", editProfile);
+
+        // function editProfile() {
+        //     fetch(url)
+        //     .then((response) => {
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         let originalData = data;
+        //         const firstNameElm = document.getElementById("firstName");
+        //         const lastNameElm = document.getElementById("lastName");
+
+        //         originalData.traders[0].firstName = firstNameElm.value;
+        //         originalData.traders[0].lastName = lastNameElm.value;
+
+        //         const requestOptions = {
+        //             method: 'PUT', 
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify(originalData)};
+                
+        //         fetch(url, requestOptions)
+        //             .then(response => {
+        //                 if (!response.ok) {
+        //                     throw new Error('Failed to update data'); // Обробляємо помилку, якщо запит не вдалося виконати
+        //                 }
+        //                 return response.json(); // Повертаємо відповідь у форматі JSON
+        //             })
+        //             .then(data => {
+        //                 console.log('Updated data:', data); // Виводимо в консоль оновлені дані
+        //                 window.location.href = "index.html";
+        //             })
+        //             .catch(error => {
+        //                 console.error('Error updating data:', error); // Виводимо в консоль помилку, якщо її зустріли
+        //             });
+        //     });
+        // }
+    </script>
+</body>
+</html>

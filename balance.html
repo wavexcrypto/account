@@ -19,11 +19,11 @@
 
     <main class="container">
         <aside class="sidebar">
-            <a href="./index.html" class="sidebar__link active">
+            <a href="./index.html" class="sidebar__link">
                 <img src="./wwwroot/icons/user-nav.svg" alt="">                   
                 <span>Profile</a>
             </a>
-            <a href="./balance.html" class="sidebar__link">
+            <a href="./balance.html" class="sidebar__link active">
                 <img src="./wwwroot/icons/card.svg" alt="">                   
                 <span>Balance</a>
             </a>
@@ -38,19 +38,25 @@
         </aside>
         <section class="content">
             <div class="content--inner">
-                <div class="profile__info">
-                    <div class="profile__header">
-                        <p class="profile__full-name" id="profileFullName"></p>
-                        <p class="profile__account-type" id="accountType"></p>
+                <div class="balance">
+                    <div class="balance__card">
+                        <p>TRX</p>
+                        <div>
+                            <p class="balance__title">Balance</p>
+                            <p class="balance__amount" id="balance">0 USDT</p>
+                        </div>
                     </div>
-                    <p class="profile__email" id="email"></p>
-                    <p class="profile__additional-info">
-                        <span id="additionalInfo"></span>
-                        <img src="" alt="" id="flag">
-                    </p>
+                    <div>
+                        <p>Address</p>
+                        <p class="balance__address">
+                            <span>1464jQA1cjRnprFWeRDbjXpoAsWMG82xwd</span>
+                            <img src="./wwwroot/icons/copy.svg" alt="Copy">
+                        </p>
+                    </div>
                 </div>
                 <div class="content__buttons">
-                    <a href="edit.html" class="btn">Edit profile</a>
+                    <button class="btn btn-green-outline" id="saveBtn">Deposit</button>
+                    <button class="btn btn-red-outline">Withdrawal</button>
                 </div>
             </div>
         </section>
@@ -82,23 +88,16 @@
 
         function renderContent(data){
             const headerFullName = document.getElementById("headerFullName");
-            const fullNameElm = document.getElementById("profileFullName");
-
             let fullName = `${data.firstName} ${data.lastName}`;
             headerFullName.textContent = fullName;
-            fullNameElm.textContent = fullName;
 
-            const accountTypeElm = document.getElementById("accountType");
-            accountTypeElm.textContent = data.accountType;
-
-            const emailElm = document.getElementById("email");
-            emailElm.textContent = data.email;
-
-            const additionalInfoElm = document.getElementById("additionalInfo")
-            const flagElm = document.getElementById("flag");
-            additionalInfoElm.textContent = `${data.phone} ${data.country}`;
-            flagElm.setAttribute("src", `wwwroot/flags/${data.country}.svg`)
+            let balance = 0;
+            data.transactions.forEach(element => {
+                balance += element.amount;
+            });
             
+            const balanceElm = document.getElementById("balance");
+            balanceElm.textContent = balance.toFixed(2) + " USDT"
         }
     </script>
 </body>
